@@ -30,8 +30,6 @@
 ","	{ return CMA; }
 "{"	{ return OPN_CRL; }
 "}"	{ return CLS_CRL; }
-"["	{ return OPN_SQR; }
-"]"	{ return CLS_SQR; }
 "+"	{ return PLS; }
 "-"|"==" { return MNS; }
 ">="	{ return GE; }

@@ -5,6 +5,31 @@
 
 #include "listmap.h"
 
+/*
+ * A couple of functions to implement linked lists,
+ * and string maps.
+ *
+ * String map is implemented trough binary tree
+ *
+ * Both lists and maps should be initiated as 0
+ */
+
+
+/* Expamle code:
+ *
+ * List myList = 0;
+ * 
+ * list_push(&myList, "abc");
+ * 
+ * if(list_len(&myList)){
+ * 	puts("yay, list is not empty");
+ * }
+ *
+ * char* myString = list_get(&myList, 0);
+ */
+
+
+// Push object to list
 void list_push(List* list, void *obj){
 	
 	while (*list != 0) {
@@ -16,6 +41,7 @@ void list_push(List* list, void *obj){
 	list[0]->next = 0;
 }
 
+// Get list length
 int list_len(List* list) {
 	
 	int length = 0;
@@ -28,6 +54,7 @@ int list_len(List* list) {
 	return length;
 }
 
+// Get item i of list, returns 0 on failure
 void* list_get(List* list, int i) {
 
 	while (i > 0) {
@@ -42,6 +69,7 @@ void* list_get(List* list, int i) {
 	return list[0]->obj;
 }
 
+// Set value in map
 void map_set(Map* map, char *str, void *obj) {
 	
 	while (*map != 0) {
@@ -68,6 +96,7 @@ void map_set(Map* map, char *str, void *obj) {
 	map[0]->low = 0;
 }
 
+// Get value in map
 void *map_get(Map* map, char* str) {
 	
 	while (*map != 0) {

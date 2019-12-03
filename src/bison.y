@@ -12,11 +12,11 @@
 }
 
 %token IF WHILE ELSE
-%token EQL SM_COL OPN_PRN CLS_PRN OPN_CRL CLS_CRL CMA PLS MNS GT LT GE LE AND OR AMP NOT RET INLINE PEQL MEQL OPN_SQR CLS_SQR
+%token EQL SM_COL OPN_PRN CLS_PRN OPN_CRL CLS_CRL CMA PLS MNS GT LT GE LE AND OR AMP NOT RET INLINE PEQL MEQL
 %token <num> NUM
 %token <str> IDENTIFIER
 
-%type <list> arg_list args statement_list block expression_list num_list
+%type <list> arg_list args statement_list block expression_list
 %type <expression> expression statement terminal identifier
 
 %%
@@ -30,12 +30,6 @@ entry: var_decl
      ;
 
 var_decl: IDENTIFIER EQL NUM SM_COL { var_decl($1, $3); }
-	| IDENTIFIER OPN_SQR num_list CLS_SQR NUM SM_COL { arr_decl($1, $5, $3); }
-	;
-
-num_list: /* nothing */ { $$ = 0; }
-	| NUM { $$ = 0; arr_push(&$$, $1); }
-	| num_list CMA NUM { $$ = $1; arr_push(&$$, $3); }
 	;
 
 func: IDENTIFIER args block { func_decl($1, $2, $3, 0); }
@@ -83,6 +77,7 @@ expression: expression MNS terminal { $$ = expression_mns($1, $3); }
 
 expression_list: expression { $$ = 0; list_push(&$$, $1); }
 	       | expression_list CMA expression { $$ = $1; list_push(&$$, $3); }
+	       ;
 
 terminal: identifier { $$ = $1; }
 	| NUM { $$ = expression_num($1); }

@@ -8,6 +8,19 @@
 
 #define DEBUG 0
 
+/*
+ * Oh, 
+ * blessed be thee,
+ * who dare to dive 
+ * down this rabiit whole
+ *
+ * Well, good luck at least ;)
+ *
+ * main() is at the bottom, its a good place to start
+*/
+
+
+
 unsigned int local_labels = 0;
 
 List declerations = 0;
@@ -276,12 +289,11 @@ void asm_expression(Function func, Expression e){
 
 		printf("\tLDA _I%d\n", e->num);
 
-
 	}else if(e->type == EXP_IDENTIFIER) {
 	
 		asm_identifier_lda(func, e->identifier);
 
-	}else if(e->type == EXP_ASSIGNMENT){
+	}else(e->type == EXP_ASSIGNMENT){
 		asm_expression(func, e->assignment.expression);
 		asm_identifier_sta(func, e->assignment.target->identifier);
 

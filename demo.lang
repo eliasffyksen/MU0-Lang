@@ -1,0 +1,8 @@
+
+i = -1;
+
+main(){
+	while(i && (a >  b)){
+		&0xFFE = !&0xFFE;
+	}
+}
