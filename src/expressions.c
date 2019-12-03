@@ -15,7 +15,7 @@ Expression expression_num(int num){
 Expression expression_assignment(Expression target, Expression value){
 	Expression e = malloc(sizeof(struct Expression));
 
-	e->type = EXP_ASSIGNEMENT;
+	e->type = EXP_ASSIGNMENT;
 	e->assignment.target = target;
 	e->assignment.expression = value;
 
@@ -77,7 +77,7 @@ Expression expression_call_function(char* func_name, List expressions){
 	Expression e = malloc(sizeof(struct Expression));
 
 	e->type = EXP_CALL_FUNCTION;
-	e->call_func.func_name = name;
+	e->call_func.func_name = func_name;
 	e->call_func.expressions = expressions;
 
 	return e;

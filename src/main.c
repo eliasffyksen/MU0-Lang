@@ -293,7 +293,7 @@ void asm_expression(Function func, Expression e){
 	
 		asm_identifier_lda(func, e->identifier);
 
-	}else(e->type == EXP_ASSIGNMENT){
+	}else if(e->type == EXP_ASSIGNMENT){
 		asm_expression(func, e->assignment.expression);
 		asm_identifier_sta(func, e->assignment.target->identifier);
 
