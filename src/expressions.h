@@ -3,10 +3,12 @@
 #ifndef EXPRESSIONS_H
 #define EXPRESSIONS_H
 
-#include "main.h"
-
 struct Expression;
 typedef struct Expression* Expression;
+
+struct Identifier;
+
+#include "main.h"
 
 struct Assignment {
 	Expression target;
@@ -45,13 +47,13 @@ struct Expression {
 		EXP_IF,
 		EXP_WHILE,
 		EXP_CALL_FUNCTION,
-		EXP_GT,
-		EXP_GE,
+		EXP_GT, // >, test greater than
+		EXP_GE, // >=, test if greater or equal
 		EXP_AND,
 		EXP_OR,
 		EXP_NOT,
-		EXP_PEQL,
-		EXP_MEQL,
+		EXP_PEQL, // +=, plus eqals opperation
+		EXP_MEQL, // -=, minus eqals opperation
 		EXP_RET,
 		EXP_INLINE
 	} type;

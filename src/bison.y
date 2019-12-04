@@ -1,7 +1,11 @@
 
 %{
-#include "listmap.h"
+
+// Bison does not decleare this function properly
+int yylex();
+
 #include "main.h"
+#include "bison.h"
 %}
 
 %union {
@@ -12,7 +16,7 @@
 }
 
 %token IF WHILE ELSE
-%token EQL SM_COL OPN_PRN CLS_PRN OPN_CRL CLS_CRL CMA PLS MNS GT LT GE LE AND OR AMP NOT RET INLINE PEQL MEQL
+%token EQL SM_COL OPN_PRN CLS_PRN OPN_CRL CLS_CRL CMA PLS MNS GT LT GE LE AND OR ASTRICS NOT RET INLINE PEQL MEQL
 %token <num> NUM
 %token <str> IDENTIFIER
 
@@ -53,6 +57,7 @@ statement_list: /* nothing */ { $$ = 0; }
 
 statement: expression SM_COL { $$ = $1; }
 	 | RET expression SM_COL { $$ = expression_ret($2); }
+	 | RET SM_COL { $$ = expression_ret(0); }
 	 | WHILE expression block { $$ = expression_while($2, $3); }
 	 | IF expression block ELSE block { $$ = expression_if($2, $3, $5); }
 	 | IF expression block { $$ = expression_if($2, $3, 0); }
@@ -86,7 +91,7 @@ terminal: identifier { $$ = $1; }
 	;
 
 identifier: IDENTIFIER { $$ = expression_identifier($1, 0); }
-	  | AMP NUM { $$ = expression_identifier(0, $2); }
+	  | ASTRICS NUM { $$ = expression_identifier(0, $2); }
 	  ;
 
 

@@ -1,0 +1,23 @@
+
+i = 0;
+
+main(){
+	i = -1;
+	while(i -= 1){
+		inline invertLights;
+	}
+}
+
+inline invertLights(){
+
+	if(getMem(*0xFEE)){
+		*0xFEE = 0;
+		return;
+	}
+
+	*0xFEE = 0xFF;
+}
+
+getMem(mem){
+	return mem;
+}

@@ -1,6 +1,14 @@
 
+#include <stdlib.h>
+
 #include "expressions.h"
 
+/*
+ * This file containes functions to create expressions
+ * from paresed input by bison.y
+ *
+ * These functions are called by bison.y
+ */
 
 Expression expression_num(int num){
 	Expression e = malloc(sizeof(struct Expression));
@@ -129,7 +137,7 @@ Expression expression_not(Expression a){
 	e->type = EXP_NOT;
 	e->e[0] = a;
 
-	return a;
+	return e;
 }
 
 Expression expression_ret(Expression a){
@@ -138,7 +146,7 @@ Expression expression_ret(Expression a){
 	e->type = EXP_RET;
 	e->e[0] = a;
 
-	return a;
+	return e;
 }
 
 Expression expression_inline(char* str){

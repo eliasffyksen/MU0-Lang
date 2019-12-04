@@ -19,7 +19,7 @@
 "return" { return RET; }
 "inline" { return INLINE; }
 
-"&"	{ return AMP; }
+"*"	{ return ASTRICS; }
 
 "="	{ return EQL; }
 "-="	{ return MEQL; }
