@@ -48,7 +48,6 @@ A statement can be any of thee below:
 ```
 expression ;
 ```
----
 ```
 if expression {
   statement_1
@@ -63,7 +62,6 @@ if expression {
 }
 ```
 NB: else is optional
----
 ```
 while expression {
   statement_1
@@ -72,7 +70,6 @@ while expression {
   statement_n
 }
 ```
----
 ```
 return expression ;
 ```
